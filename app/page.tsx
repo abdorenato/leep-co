@@ -25,12 +25,35 @@ import { cn } from "@/lib/utils"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
 import { ContactForm } from "@/components/contact-form"
 import { CaseStudies } from "@/components/case-studies"
+import { FeaturedBlogPost } from "@/components/featured-blog-post"
+import { SiteHeader } from "@/components/site-header"
 
 export default function Home() {
-  const [language, setLanguage] = useState<Language>("pt")
+  const [language, setLanguage] = useState<Language>('pt')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("hero")
   const t = translations[language]
+
+  // Initialize language from localStorage on client-side
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedLanguage = localStorage.getItem('language') as Language;
+      if (storedLanguage && (storedLanguage === 'en' || storedLanguage === 'pt')) {
+        setLanguage(storedLanguage);
+      } else {
+        // Fallback to browser language if no stored preference
+        const browserLang = navigator.language.startsWith('pt') ? 'pt' : 'en';
+        setLanguage(browserLang);
+        localStorage.setItem('language', browserLang);
+      }
+    }
+  }, []);
+
+  // Handle language change and persist preference
+  const handleLanguageChange = (lang: Language) => {
+    setLanguage(lang);
+    localStorage.setItem('language', lang);
+  };
 
   // Refs for animated sections
   const [heroRef, heroVisible] = useIntersectionObserver<HTMLDivElement>()
@@ -268,169 +291,18 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
-      <header className="fixed w-full z-50 bg-black border-b border-gray-800">
-        <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/logo_leepco_branco_gd.png"
-              alt="L'eep Co. Logo"
-              width={150}
-              height={50}
-              className="h-12 w-auto hover:animate-pulse transition-all duration-300"
-            />
-          </Link>
-          <nav className="hidden md:flex gap-6">
-            <Link
-              href="#about"
-              onClick={() => scrollToSection("about")}
-              className={cn(
-                "text-sm font-medium hover:text-teal transition-colors relative",
-                activeSection === "about" ? "text-teal" : "text-gray-300",
-              )}
-            >
-              {t.about}
-              {activeSection === "about" && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal animate-pulse"></span>
-              )}
-            </Link>
-            <Link
-              href="#problems"
-              onClick={() => scrollToSection("problems")}
-              className={cn(
-                "text-sm font-medium hover:text-teal transition-colors relative",
-                activeSection === "problems" ? "text-teal" : "text-gray-300",
-              )}
-            >
-              {t.problemsTitle}
-              {activeSection === "problems" && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal animate-pulse"></span>
-              )}
-            </Link>
-            <Link
-              href="#journey"
-              onClick={() => scrollToSection("journey")}
-              className={cn(
-                "text-sm font-medium hover:text-teal transition-colors relative",
-                activeSection === "journey" ? "text-teal" : "text-gray-300",
-              )}
-            >
-              {language === "pt" ? "Jornada Estratégica" : "Strategic Journey"}
-              {activeSection === "journey" && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal animate-pulse"></span>
-              )}
-            </Link>
-            <Link
-              href="#why-us"
-              onClick={() => scrollToSection("why-us")}
-              className={cn(
-                "text-sm font-medium hover:text-teal transition-colors relative",
-                activeSection === "why-us" ? "text-teal" : "text-gray-300",
-              )}
-            >
-              {language === "pt" ? "Casos de Uso" : "Use Cases"}
-              {activeSection === "why-us" && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal animate-pulse"></span>
-              )}
-            </Link>
-            <Link
-              href="/blog"
-              className={cn(
-                "text-sm font-medium hover:text-teal transition-colors relative",
-                activeSection === "blog" ? "text-teal" : "text-gray-300",
-              )}
-            >
-              Blog
-              {activeSection === "blog" && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal animate-pulse"></span>
-              )}
-            </Link>
-            <Link
-              href="#contact"
-              onClick={() => scrollToSection("contact")}
-              className={cn(
-                "text-sm font-medium hover:text-teal transition-colors relative",
-                activeSection === "contact" ? "text-teal" : "text-gray-300",
-              )}
-            >
-              {t.contact}
-              {activeSection === "contact" && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal animate-pulse"></span>
-              )}
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher onLanguageChange={setLanguage} currentLanguage={language} />
-            <Button
-              className="hidden md:flex bg-teal hover:bg-teal/90 text-black font-medium group relative overflow-hidden"
-              onClick={() => scrollToSection("contact")}
-            >
-              <span className="relative z-10">{t.cta}</span>
-              <span className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="md:hidden border-teal text-teal hover:animate-pulse"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-black border-t border-gray-800 absolute w-full animate-fade-in">
-            <div className="container py-4 px-4 flex flex-col space-y-4">
-              <Link
-                href="#about"
-                onClick={() => scrollToSection("about")}
-                className="text-lg font-medium py-2 hover:text-teal"
-              >
-                {t.about}
-              </Link>
-              <Link
-                href="#problems"
-                onClick={() => scrollToSection("problems")}
-                className="text-lg font-medium py-2 hover:text-teal"
-              >
-                {t.problemsTitle}
-              </Link>
-              <Link
-                href="#journey"
-                onClick={() => scrollToSection("journey")}
-                className="text-lg font-medium py-2 hover:text-teal"
-              >
-                {language === "pt" ? "Jornada Estratégica" : "Strategic Journey"}
-              </Link>
-              <Link
-                href="#why-us"
-                onClick={() => scrollToSection("why-us")}
-                className="text-lg font-medium py-2 hover:text-teal"
-              >
-                {language === "pt" ? "Casos de Uso" : "Use Cases"}
-              </Link>
-              <Link href="/blog" className="text-lg font-medium py-2 hover:text-teal">
-                Blog
-              </Link>
-              <Link
-                href="#contact"
-                onClick={() => scrollToSection("contact")}
-                className="text-lg font-medium py-2 hover:text-teal"
-              >
-                {t.contact}
-              </Link>
-              <Button
-                className="w-full bg-teal hover:bg-teal/90 text-black font-medium mt-4 group relative overflow-hidden"
-                onClick={() => scrollToSection("contact")}
-              >
-                <span className="relative z-10">{t.cta}</span>
-                <span className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-              </Button>
-            </div>
-          </div>
-        )}
-      </header>
+      <SiteHeader
+        language={language}
+        setLanguage={handleLanguageChange}
+        activeSection={activeSection}
+        isHomePage={true}
+        translations={{
+          about: t.about,
+          problemsTitle: t.problemsTitle,
+          contact: t.contact,
+          cta: t.cta,
+        }}
+      />
 
       <main className="flex-1 pt-16">
         {/* Hero Section */}
@@ -480,7 +352,7 @@ export default function Home() {
             <div
               ref={aboutRef}
               className={cn(
-                "max-w-3xl mx-auto space-y-12 transition-all duration-1000",
+                "max-w-5xl mx-auto space-y-12 transition-all duration-1000",
                 aboutVisible ? "opacity-100" : "opacity-0",
               )}
             >
@@ -489,26 +361,35 @@ export default function Home() {
                 <p className="text-xl text-gray-700 max-w-2xl mx-auto">{t.aboutText}</p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-8 mx-auto">
                 <div
                   className={cn(
-                    "bg-white p-6 rounded-md border border-gray-300 shadow-sm transition-all duration-500 hover:shadow-md hover:border-teal",
+                    "bg-black p-6 rounded-lg border border-gray-800 shadow-sm transition-all duration-500 hover:shadow-md hover:border-teal md:col-span-1 text-center flex flex-col justify-center",
                     aboutVisible ? "animate-slide-up" : "opacity-0",
                   )}
                   style={{ animationDelay: "0.1s" }}
                 >
-                  <h3 className="text-xl font-bold text-teal mb-3">{t.purpose}</h3>
-                  <p className="text-gray-700">{t.purposeText}</p>
+                  <h3 className="text-2xl font-bold text-teal mb-4">{t.purpose}</h3>
+                  <p className="text-white text-xl">{t.purposeText}</p>
                 </div>
                 <div
                   className={cn(
-                    "bg-white p-6 rounded-md border border-gray-300 shadow-sm transition-all duration-500 hover:shadow-md hover:border-teal",
+                    "bg-black p-6 rounded-lg border border-gray-800 shadow-sm transition-all duration-500 hover:shadow-md hover:border-teal md:col-span-1 text-center flex flex-col justify-center",
                     aboutVisible ? "animate-slide-up" : "opacity-0",
                   )}
                   style={{ animationDelay: "0.2s" }}
                 >
-                  <h3 className="text-xl font-bold text-teal mb-3">{t.positioning}</h3>
-                  <p className="text-gray-700">{t.positioningText}</p>
+                  <h3 className="text-2xl font-bold text-teal mb-4">{t.positioning}</h3>
+                  <p className="text-white text-xl">{t.positioningText}</p>
+                </div>
+                <div
+                  className={cn(
+                    "transition-all duration-500 md:col-span-1",
+                    aboutVisible ? "animate-slide-up" : "opacity-0",
+                  )}
+                  style={{ animationDelay: "0.3s" }}
+                >
+                  <FeaturedBlogPost slug="ambidestria-corporativa" language={language} />
                 </div>
               </div>
             </div>
@@ -1153,7 +1034,7 @@ export default function Home() {
             />
             <p className="text-sm text-gray-400">© 2025 L'eep Co. {t.rights}</p>
           </div>
-          <LanguageSwitcher onLanguageChange={setLanguage} currentLanguage={language} />
+          <LanguageSwitcher onLanguageChange={handleLanguageChange} currentLanguage={language} />
         </div>
       </footer>
     </div>

@@ -32,6 +32,14 @@ export async function getPosts() {
   }`)
 }
 
+// Função para buscar apenas os slugs dos posts para debugging
+export async function getAllPostSlugs() {
+  return client.fetch(`*[_type == "post"] {
+    title,
+    "slug": slug.current
+  }`)
+}
+
 // Função para buscar um post específico com campos otimizados para SEO
 export async function getPost(slug: string) {
   return client.fetch(

@@ -9,10 +9,10 @@ const components = {
   types: {
     image: ({ value }: any) => {
       return (
-        <figure className="relative w-full h-[300px] my-6 rounded-lg overflow-hidden">
+        <figure className="relative w-full h-[400px] my-8 rounded-lg overflow-hidden">
           <Image src={urlFor(value).url() || "/placeholder.svg"} alt={value.alt || ""} fill className="object-cover" />
           {value.caption && (
-            <figcaption className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-white text-sm">
+            <figcaption className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 text-white text-sm">
               {value.caption}
             </figcaption>
           )}
@@ -25,10 +25,10 @@ const components = {
           {value.text}
         </Link>
       ) : (
-        <div className="my-6">
+        <div className="my-8">
           <Link
             href={value.url}
-            className="bg-teal hover:bg-teal/90 text-black font-medium px-4 py-2 rounded-md inline-block"
+            className="bg-teal hover:bg-teal/90 text-black font-medium px-6 py-3 rounded-md inline-block text-lg"
           >
             {value.text}
           </Link>
@@ -52,7 +52,7 @@ const components = {
   block: {
     // Como o H1 já é usado para o título do post, começamos com H2 para o conteúdo
     h1: ({ children }: any) => {
-      return <h2 className="text-3xl font-bold mt-8 mb-4">{children}</h2>
+      return <h2 className="text-3xl font-bold mt-10 mb-5">{children}</h2>
     },
     h2: ({ children }: any) => {
       return <h3 className="text-2xl font-bold mt-8 mb-4">{children}</h3>
@@ -64,18 +64,18 @@ const components = {
       return <h5 className="text-lg font-bold mt-6 mb-2">{children}</h5>
     },
     normal: ({ children }: any) => {
-      return <p className="my-4 leading-relaxed">{children}</p>
+      return <p className="my-5 leading-relaxed text-lg">{children}</p>
     },
     blockquote: ({ children }: any) => {
-      return <blockquote className="border-l-4 border-teal pl-4 italic my-6 text-gray-300">{children}</blockquote>
+      return <blockquote className="border-l-4 border-teal pl-5 italic my-8 text-gray-300 text-lg">{children}</blockquote>
     },
   },
   list: {
     bullet: ({ children }: any) => {
-      return <ul className="list-disc pl-6 my-4 space-y-2">{children}</ul>
+      return <ul className="list-disc pl-8 my-6 space-y-3 text-lg">{children}</ul>
     },
     number: ({ children }: any) => {
-      return <ol className="list-decimal pl-6 my-4 space-y-2">{children}</ol>
+      return <ol className="list-decimal pl-8 my-6 space-y-3 text-lg">{children}</ol>
     },
   },
 }

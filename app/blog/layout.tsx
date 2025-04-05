@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { translations, type Language } from "@/lib/translations"
@@ -16,11 +16,28 @@ export default function BlogLayout({
   const [language, setLanguage] = useState<Language>("pt")
   const t = translations[language]
 
+  useEffect(() => {
+    // Check for saved language preference on component mount
+    const storedLanguage = localStorage.getItem('language') as Language;
+    if (storedLanguage && (storedLanguage === 'en' || storedLanguage === 'pt')) {
+      setLanguage(storedLanguage);
+    } else {
+      // Fallback to browser language
+      const browserLang = navigator.language.startsWith('pt') ? 'pt' : 'en';
+      setLanguage(browserLang);
+    }
+  }, []);
+
+  const handleLanguageChange = (lang: Language) => {
+    setLanguage(lang);
+    localStorage.setItem('language', lang);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       <SiteHeader
         language={language}
-        setLanguage={setLanguage}
+        setLanguage={handleLanguageChange}
         activeSection="blog"
         translations={{
           about: t.about,

@@ -38,7 +38,7 @@ export function SiteHeader({
         section.scrollIntoView({ behavior: "smooth" })
       }
     } else {
-      // Se não estiver na página inicial, redireciona para a página inicial com a âncora
+      // When not on homepage, go to homepage with anchor
       window.location.href = `/#${sectionId}`
     }
     setIsMenuOpen(false)
@@ -59,7 +59,12 @@ export function SiteHeader({
         <nav className="hidden md:flex gap-6">
           <Link
             href={isHomePage ? "#about" : "/#about"}
-            onClick={() => isHomePage && scrollToSection("about")}
+            onClick={(e) => {
+              if (isHomePage) {
+                e.preventDefault();
+                scrollToSection("about");
+              }
+            }}
             className={cn(
               "text-sm font-medium hover:text-teal transition-colors relative",
               activeSection === "about" ? "text-teal" : "text-gray-300",
@@ -72,7 +77,12 @@ export function SiteHeader({
           </Link>
           <Link
             href={isHomePage ? "#problems" : "/#problems"}
-            onClick={() => isHomePage && scrollToSection("problems")}
+            onClick={(e) => {
+              if (isHomePage) {
+                e.preventDefault();
+                scrollToSection("problems");
+              }
+            }}
             className={cn(
               "text-sm font-medium hover:text-teal transition-colors relative",
               activeSection === "problems" ? "text-teal" : "text-gray-300",
@@ -85,7 +95,12 @@ export function SiteHeader({
           </Link>
           <Link
             href={isHomePage ? "#journey" : "/#journey"}
-            onClick={() => isHomePage && scrollToSection("journey")}
+            onClick={(e) => {
+              if (isHomePage) {
+                e.preventDefault();
+                scrollToSection("journey");
+              }
+            }}
             className={cn(
               "text-sm font-medium hover:text-teal transition-colors relative",
               activeSection === "journey" ? "text-teal" : "text-gray-300",
@@ -98,7 +113,12 @@ export function SiteHeader({
           </Link>
           <Link
             href={isHomePage ? "#why-us" : "/#why-us"}
-            onClick={() => isHomePage && scrollToSection("why-us")}
+            onClick={(e) => {
+              if (isHomePage) {
+                e.preventDefault();
+                scrollToSection("why-us");
+              }
+            }}
             className={cn(
               "text-sm font-medium hover:text-teal transition-colors relative",
               activeSection === "why-us" ? "text-teal" : "text-gray-300",
@@ -123,7 +143,12 @@ export function SiteHeader({
           </Link>
           <Link
             href={isHomePage ? "#contact" : "/#contact"}
-            onClick={() => isHomePage && scrollToSection("contact")}
+            onClick={(e) => {
+              if (isHomePage) {
+                e.preventDefault();
+                scrollToSection("contact");
+              }
+            }}
             className={cn(
               "text-sm font-medium hover:text-teal transition-colors relative",
               activeSection === "contact" ? "text-teal" : "text-gray-300",
@@ -139,7 +164,7 @@ export function SiteHeader({
           <LanguageSwitcher onLanguageChange={setLanguage} currentLanguage={language} />
           <Button
             className="hidden md:flex bg-teal hover:bg-teal/90 text-black font-medium group relative overflow-hidden"
-            onClick={() => scrollToSection("contact")}
+            onClick={() => isHomePage ? scrollToSection("contact") : window.location.href = "/#contact"}
           >
             <span className="relative z-10">{translations.cta}</span>
             <span className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
@@ -161,28 +186,48 @@ export function SiteHeader({
           <div className="container py-4 px-4 flex flex-col space-y-4">
             <Link
               href={isHomePage ? "#about" : "/#about"}
-              onClick={() => isHomePage && scrollToSection("about")}
+              onClick={(e) => {
+                if (isHomePage) {
+                  e.preventDefault();
+                  scrollToSection("about");
+                }
+              }}
               className="text-lg font-medium py-2 hover:text-teal"
             >
               {translations.about}
             </Link>
             <Link
               href={isHomePage ? "#problems" : "/#problems"}
-              onClick={() => isHomePage && scrollToSection("problems")}
+              onClick={(e) => {
+                if (isHomePage) {
+                  e.preventDefault();
+                  scrollToSection("problems");
+                }
+              }}
               className="text-lg font-medium py-2 hover:text-teal"
             >
               {translations.problemsTitle}
             </Link>
             <Link
               href={isHomePage ? "#journey" : "/#journey"}
-              onClick={() => isHomePage && scrollToSection("journey")}
+              onClick={(e) => {
+                if (isHomePage) {
+                  e.preventDefault();
+                  scrollToSection("journey");
+                }
+              }}
               className="text-lg font-medium py-2 hover:text-teal"
             >
               {language === "pt" ? "Jornada Estratégica" : "Strategic Journey"}
             </Link>
             <Link
               href={isHomePage ? "#why-us" : "/#why-us"}
-              onClick={() => isHomePage && scrollToSection("why-us")}
+              onClick={(e) => {
+                if (isHomePage) {
+                  e.preventDefault();
+                  scrollToSection("why-us");
+                }
+              }}
               className="text-lg font-medium py-2 hover:text-teal"
             >
               {language === "pt" ? "Casos de Uso" : "Use Cases"}
@@ -192,14 +237,19 @@ export function SiteHeader({
             </Link>
             <Link
               href={isHomePage ? "#contact" : "/#contact"}
-              onClick={() => isHomePage && scrollToSection("contact")}
+              onClick={(e) => {
+                if (isHomePage) {
+                  e.preventDefault();
+                  scrollToSection("contact");
+                }
+              }}
               className="text-lg font-medium py-2 hover:text-teal"
             >
               {translations.contact}
             </Link>
             <Button
               className="w-full bg-teal hover:bg-teal/90 text-black font-medium mt-4 group relative overflow-hidden"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => isHomePage ? scrollToSection("contact") : window.location.href = "/#contact"}
             >
               <span className="relative z-10">{translations.cta}</span>
               <span className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>

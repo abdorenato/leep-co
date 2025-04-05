@@ -12,6 +12,49 @@ body {
   }
 }
 
+/* Custom prose styles for blog posts */
+.prose-lg {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.prose-lg p {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.prose-lg h2 {
+  font-size: 1.75rem;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.prose-lg h3 {
+  font-size: 1.5rem;
+  margin-top: 1.75em;
+  margin-bottom: 0.75em;
+}
+
+.prose-lg ul, .prose-lg ol {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+.prose-lg li {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.prose-lg blockquote {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  padding-left: 1.25em;
+  border-left-width: 0.25em;
+  border-left-color: rgba(156, 163, 175, 0.5);
+  font-style: italic;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
