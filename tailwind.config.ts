@@ -56,6 +56,9 @@ const config = {
         teal: {
           DEFAULT: "#6CC5D3",
         },
+        cream: {
+          DEFAULT: "#F7F1E8",
+        },
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

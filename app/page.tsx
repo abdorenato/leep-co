@@ -63,6 +63,7 @@ export default function Home() {
   const [whyUsRef, whyUsVisible] = useIntersectionObserver<HTMLDivElement>()
   const [casesRef, casesVisible] = useIntersectionObserver<HTMLDivElement>()
   const [contactRef, contactVisible] = useIntersectionObserver<HTMLDivElement>()
+  const [pillarsRef, pillarsVisible] = useIntersectionObserver<HTMLDivElement>()
 
   // Casos de uso organizados por pilar da jornada
   const caseStudies = {
@@ -636,37 +637,22 @@ export default function Home() {
 
               {/* Why Us Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Card 1 */}
+                {/* First Card - Sob medida */}
                 <div
                   className={cn(
-                    "bg-teal border border-teal/30 rounded-lg p-6 transition-all duration-500 transform hover:shadow-md hover:shadow-teal/20",
-                    whyUsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
+                    "bg-[#6CC5D3] p-8 rounded-3xl shadow-sm transition-all duration-500 hover:shadow-md flex flex-col items-center h-full",
+                    whyUsVisible ? "animate-slide-up" : "opacity-0 translate-y-10",
                   )}
-                  style={{ transitionDelay: "0.1s" }}
+                  style={{ animationDelay: "0.1s" }}
                 >
-                  <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-8 w-8 text-white"
-                    >
-                      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5l6.74-6.76z" />
-                      <line x1="16" x2="2" y1="8" y2="22" />
-                      <line x1="17.5" x2="9" y1="15" y2="15" />
+                  <div className="w-16 h-16 bg-black rounded-full mb-5 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-center mb-4 text-gray-900">{t.whyUsText1}</h3>
-                  <p className="text-gray-800 text-center">
-                    {language === "pt"
-                      ? "Estratégias personalizadas para cada desafio único"
-                      : "Custom strategies for each unique challenge"}
+                  <h3 className="text-2xl font-bold text-black mb-4 text-center">Sob medida</h3>
+                  <p className="text-black text-center">
+                    Estratégias personalizadas para cada desafio único
                   </p>
                 </div>
 
@@ -691,9 +677,10 @@ export default function Home() {
                       strokeLinejoin="round"
                       className="h-8 w-8 text-white"
                     >
-                      <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" />
-                      <path d="M12 4v16" />
-                      <path d="M4 12h16" />
+                      <path d="M12 19l7-7 3 3-7 7-3-3z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2 2l7.586 7.586" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M11 11l-3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-center mb-4 text-gray-900">{t.whyUsText2}</h3>
@@ -806,6 +793,82 @@ export default function Home() {
                     <CaseStudies categories={caseCategories} translations={caseTranslations} />
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pillar Section */}
+        <section id="pillars" className="w-full py-20 md:py-32 bg-cream">
+          <div className="container px-4 md:px-6">
+            <div 
+              ref={pillarsRef}
+              className={cn(
+                "max-w-5xl mx-auto space-y-12 transition-all duration-1000",
+                pillarsVisible ? "opacity-100" : "opacity-0",
+              )}
+            >
+              <div className="space-y-4 text-center mb-10">
+                <h2 className="text-3xl md:text-5xl font-bold text-black">L'eep Co.</h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto">
+                {/* Sob medida */}
+                <div
+                  className={cn(
+                    "bg-[#6CC5D3] p-8 rounded-3xl shadow-sm transition-all duration-500 hover:shadow-md flex flex-col items-center h-full",
+                    pillarsVisible ? "animate-slide-up" : "opacity-0",
+                  )}
+                  style={{ animationDelay: "0.1s" }}
+                >
+                  <div className="w-16 h-16 bg-black rounded-full mb-5 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-black mb-4 text-center">Sob medida</h3>
+                  <p className="text-black text-center">
+                    Estratégias personalizadas para cada desafio único
+                  </p>
+                </div>
+                
+                {/* L'Brief */}
+                <div
+                  className={cn(
+                    "bg-[#6CC5D3] p-8 rounded-3xl shadow-sm transition-all duration-500 hover:shadow-md flex flex-col items-center h-full",
+                    pillarsVisible ? "animate-slide-up" : "opacity-0",
+                  )}
+                  style={{ animationDelay: "0.2s" }}
+                >
+                  <div className="w-16 h-16 bg-black rounded-full mb-5 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-black mb-4 text-center">L' Brief</h3>
+                  <p className="text-black text-center">
+                    Planejamento criativo estratégico para agências e empresas que buscam ideias inovadoras e eficazes.
+                  </p>
+                </div>
+              </div>
+              
+              {/* L'On - Full Width */}
+              <div
+                className={cn(
+                  "bg-[#6CC5D3] p-8 rounded-3xl shadow-sm transition-all duration-500 hover:shadow-md flex flex-col items-center h-full",
+                  pillarsVisible ? "animate-slide-up" : "opacity-0",
+                )}
+                style={{ animationDelay: "0.3s" }}
+              >
+                <div className="w-16 h-16 bg-black rounded-full mb-5 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-4 text-center">L' On</h3>
+                <p className="text-black text-center">
+                  Criação e operação contínua de estratégias de marketing digital para um crescimento consistente.
+                </p>
               </div>
             </div>
           </div>
