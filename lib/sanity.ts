@@ -6,7 +6,13 @@ export const client = createClient({
   projectId: "cbpirxle", // Novo ID do projeto que você acabou de criar
   dataset: "production",
   apiVersion: "2023-05-03",
-  useCdn: true,
+  useCdn: false, // Disable CDN to avoid API CDN URL issues
+  // Add client configuration for better error handling
+  token: process.env.SANITY_API_TOKEN,
+  stega: {
+    enabled: false,
+  },
+  perspective: 'published',
 })
 
 // Configuração para URLs de imagem

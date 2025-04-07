@@ -87,7 +87,7 @@ export function ContactForm({ translations }: ContactFormProps) {
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
-      <div className="space-y-2">
+      <div className="space-y-2.5">
         <label htmlFor="name" className="text-sm font-medium">
           {translations.name} *
         </label>
@@ -96,12 +96,12 @@ export function ContactForm({ translations }: ContactFormProps) {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="flex h-10 w-full rounded-md border border-gray-800 bg-black px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 focus:border-teal"
+          className="flex h-10 w-full rounded-md border border-gray-800 bg-black px-3.5 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 focus:border-teal"
           placeholder={translations.name}
           required
         />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-2.5">
         <label htmlFor="email" className="text-sm font-medium">
           {translations.email} *
         </label>
@@ -111,12 +111,12 @@ export function ContactForm({ translations }: ContactFormProps) {
           type="email"
           value={formData.email}
           onChange={handleChange}
-          className="flex h-10 w-full rounded-md border border-gray-800 bg-black px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 focus:border-teal"
+          className="flex h-10 w-full rounded-md border border-gray-800 bg-black px-3.5 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 focus:border-teal"
           placeholder={translations.email}
           required
         />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-2.5">
         <label htmlFor="company" className="text-sm font-medium">
           {translations.company}
         </label>
@@ -125,11 +125,11 @@ export function ContactForm({ translations }: ContactFormProps) {
           name="company"
           value={formData.company}
           onChange={handleChange}
-          className="flex h-10 w-full rounded-md border border-gray-800 bg-black px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 focus:border-teal"
+          className="flex h-10 w-full rounded-md border border-gray-800 bg-black px-3.5 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 focus:border-teal"
           placeholder={translations.company}
         />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-2.5">
         <label htmlFor="message" className="text-sm font-medium">
           {translations.message} *
         </label>
@@ -138,7 +138,7 @@ export function ContactForm({ translations }: ContactFormProps) {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="flex min-h-[120px] w-full rounded-md border border-gray-800 bg-black px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 focus:border-teal"
+          className="flex min-h-[120px] w-full rounded-md border border-gray-800 bg-black px-3.5 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-black transition-all duration-300 focus:border-teal"
           placeholder={translations.message}
           required
         ></textarea>
