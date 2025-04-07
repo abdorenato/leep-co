@@ -130,7 +130,7 @@ export function SiteHeader({
             >
               <div className="py-1">
                 <Link
-                  href="/growth"
+                  href="/growth" onClick={() => { setIsMenuOpen(false); window.location.href = "/growth"; return false; }}
                   className={
                     activeSection === "growth" 
                       ? "block px-4 py-3 hover:bg-gray-800 transition-colors text-orange-400"
@@ -230,7 +230,7 @@ export function SiteHeader({
                 <div className="ml-4 mt-2 space-y-4 border-l-2 border-gray-800 pl-4">
                   <div>
                     <Link
-                      href="/growth"
+                      href="/growth" onClick={() => { setIsMenuOpen(false); window.location.href = "/growth"; return false; }}
                       className={activeSection === "growth" 
                         ? "block text-lg font-medium py-2 text-orange-400" 
                         : "block text-lg font-medium py-2 text-gray-300 hover:text-orange-400"}
