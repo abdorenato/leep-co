@@ -201,7 +201,7 @@ export function SiteHeader({
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black border-t border-gray-800 absolute w-full animate-fade-in">
+        <div className="md:hidden bg-black border-t border-gray-800 absolute w-full z-50 animate-fade-in">
           <div className="container py-4 px-4 flex flex-col space-y-4">
             <Link
               href={isHomePage ? "#about" : "/home#about"}
