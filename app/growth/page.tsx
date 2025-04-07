@@ -63,7 +63,7 @@ export default function GrowthPage() {
       />
       
       {/* Hero Section */}
-      <section className="pt-24 md:pt-32 pb-16 md:pb-24">
+      <section className="pt-14 md:pt-18 pb-8 md:pb-14">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
@@ -72,7 +72,7 @@ export default function GrowthPage() {
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
                 {language === 'pt' 
-                  ? "Consultoria Estratégica Ambidestra para Impulsionar o Crescimento do Seu Negócio"
+                  ? "Consultoria Estratégica para Impulsionar o Crescimento do Seu Negócio"
                   : "Ambidextrous Strategic Consulting to Propel Your Business Growth"}
               </h1>
               <p className="text-xl text-gray-400 md:text-2xl max-w-[600px]">
@@ -93,7 +93,7 @@ export default function GrowthPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative aspect-video lg:aspect-square rounded-xl overflow-hidden">
+            <div className="hidden md:block relative aspect-video lg:aspect-square rounded-xl overflow-hidden">
               <Image 
                 src="/images/orange-l-logo.png"
                 alt="L'eep Growth Strategic Consulting" 
@@ -239,7 +239,7 @@ export default function GrowthPage() {
           <div className="max-w-[800px] mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {language === 'pt' 
-                ? "Nossos Serviços de Consultoria Estratégica Ambidestra" 
+                ? "Nossos Serviços de Consultoria Estratégica" 
                 : "Our Ambidextrous Strategic Consulting Services"}
             </h2>
             <p className="text-lg text-gray-400">

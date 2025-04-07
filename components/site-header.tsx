@@ -234,6 +234,10 @@ export function SiteHeader({
                       className={activeSection === "growth" 
                         ? "block text-lg font-medium py-2 text-orange-400" 
                         : "block text-lg font-medium py-2 text-gray-300 hover:text-orange-400"}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsServicesOpen(false);
+                      }}
                     >
                       L'eep Growth
                     </Link>
@@ -247,6 +251,10 @@ export function SiteHeader({
                       className={activeSection === "brief" 
                         ? "block text-lg font-medium py-2 text-purple-400" 
                         : "block text-lg font-medium py-2 text-gray-300 hover:text-purple-400"}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsServicesOpen(false);
+                      }}
                     >
                       L'eep Brief
                     </Link>
@@ -260,6 +268,10 @@ export function SiteHeader({
                       className={activeSection === "on" 
                         ? "block text-lg font-medium py-2 text-red-400" 
                         : "block text-lg font-medium py-2 text-gray-300 hover:text-red-400"}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsServicesOpen(false);
+                      }}
                     >
                       L'eep On
                     </Link>

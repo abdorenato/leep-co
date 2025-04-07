@@ -63,7 +63,7 @@ export default function BriefPage() {
       />
       
       {/* Hero Section */}
-      <section className="pt-24 md:pt-32 pb-16 md:pb-24">
+      <section className="pt-14 md:pt-18 pb-8 md:pb-14">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
@@ -93,7 +93,7 @@ export default function BriefPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative aspect-video lg:aspect-square rounded-xl overflow-hidden">
+            <div className="hidden md:block relative aspect-video lg:aspect-square rounded-xl overflow-hidden">
               <Image 
                 src="/images/purple-l-logo.png"
                 alt="L'eep Brief Creative Planning" 

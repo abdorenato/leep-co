@@ -63,17 +63,17 @@ export default function OnPage() {
       />
       
       {/* Hero Section */}
-      <section className="pt-24 md:pt-32 pb-16 md:pb-24">
+      <section className="pt-14 md:pt-18 pb-8 md:pb-14">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <div className="inline-block rounded-lg bg-red-900/20 px-5 py-3 text-3xl font-bold text-red-400 mb-4">
                 L'eep On
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter whitespace-pre-line">
                 {language === 'pt' 
-                  ? "Sua Agência Always On para Brand & Performance"
-                  : "Your Always On Agency for Brand & Performance"}
+                  ? "Sua Agência\nAlways On para\nBrand & Performance"
+                  : "Your Agency\nAlways On for\nBrand & Performance"}
               </h1>
               <p className="text-xl text-gray-400 md:text-2xl max-w-[600px]">
                 {language === 'pt' 
@@ -93,7 +93,7 @@ export default function OnPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative aspect-video lg:aspect-square rounded-xl overflow-hidden">
+            <div className="hidden md:block relative aspect-video lg:aspect-square rounded-xl overflow-hidden">
               <Image 
                 src="/images/red-l-logo.png"
                 alt="L'eep On Digital Marketing & PR" 
