@@ -56,9 +56,9 @@ export default function BlogLayout({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8">
             <div>
               <Link href="/home">
-                <Image
-                  src="/images/logo_leepco_branco_gd.png"
-                  alt="L'eep Co. Logo"
+            <Image
+              src="/images/logo_leepco_branco_gd.png"
+              alt="L'eep Co. Logo"
                   width={150}
                   height={150}
                   className="object-contain mb-4"

@@ -106,7 +106,7 @@ export default function NewHomePage() {
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight">
                 {language === 'pt' 
-                  ? "Movemos marcas com estratégia sólida e coragem criativa." 
+                  ? "Aceleramos resultados com estratégia sólida e coragem criativa." 
                   : "We move brands with solid strategy and creative courage."}
               </h1>
               <p className="text-xl text-gray-300 md:text-2xl max-w-[600px]">
@@ -250,7 +250,7 @@ export default function NewHomePage() {
                   <BarChart className="text-orange-400 h-12 w-12" />
                 </div>
                 <h3 className="text-2xl font-bold group-hover:text-orange-400 transition-colors text-center text-white">
-                  {language === 'pt' ? "Desafios Estratégicos" : "Strategic Challenges"}
+                  {language === 'pt' ? "Estratégicos" : "Strategic Challenges"}
                 </h3>
               </div>
               <ul className="space-y-4">
@@ -294,7 +294,7 @@ export default function NewHomePage() {
                   <PenTool className="text-purple-400 h-12 w-12" />
                 </div>
                 <h3 className="text-2xl font-bold group-hover:text-purple-400 transition-colors text-center text-white">
-                  {language === 'pt' ? "Desafios Criativos" : "Creative Challenges"}
+                  {language === 'pt' ? "Criativos" : "Creative Challenges"}
                 </h3>
               </div>
               <ul className="space-y-4">
@@ -338,7 +338,7 @@ export default function NewHomePage() {
                   <MessageSquare className="text-red-400 h-12 w-12" />
                 </div>
                 <h3 className="text-2xl font-bold group-hover:text-red-400 transition-colors text-center text-white">
-                  {language === 'pt' ? "Desafios de Presença Digital" : "Digital Presence Challenges"}
+                  {language === 'pt' ? "Presença Digital" : "Digital Presence"}
                 </h3>
               </div>
               <ul className="space-y-4">
