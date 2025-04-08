@@ -139,7 +139,10 @@ export function SiteHeader({
             >
               <div className="py-1">
                 <button
-                  onClick={() => navigateToPage('/growth')}
+                  onClick={() => {
+                    setIsServicesOpen(false);
+                    window.location.href = '/growth';
+                  }}
                   className={`block px-4 py-3 w-full text-left hover:bg-gray-800 transition-colors ${
                     activeSection === "growth" 
                       ? "text-orange-400"
@@ -150,7 +153,10 @@ export function SiteHeader({
                   <div className="text-xs text-gray-400 mt-1">{language === "pt" ? "Consultoria de crescimento estratégico" : "Strategic growth consulting"}</div>
                 </button>
                 <button
-                  onClick={() => navigateToPage('/brief')}
+                  onClick={() => {
+                    setIsServicesOpen(false);
+                    window.location.href = '/brief';
+                  }}
                   className={`block px-4 py-3 w-full text-left hover:bg-gray-800 transition-colors ${
                     activeSection === "brief" 
                       ? "text-purple-400"
@@ -161,7 +167,10 @@ export function SiteHeader({
                   <div className="text-xs text-gray-400 mt-1">{language === "pt" ? "Planejamento criativo e estratégico" : "Creative and strategic planning"}</div>
                 </button>
                 <button
-                  onClick={() => navigateToPage('/on')}
+                  onClick={() => {
+                    setIsServicesOpen(false);
+                    window.location.href = '/on';
+                  }}
                   className={`block px-4 py-3 w-full text-left hover:bg-gray-800 transition-colors ${
                     activeSection === "on" 
                       ? "text-red-400"
@@ -225,69 +234,75 @@ export function SiteHeader({
               {translations.about}
             </Link>
             
-            {/* Mobile Services Dropdown */}
+            {/* Mobile Services - Always Expanded */}
             <div>
-              <button 
-                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="text-lg font-medium py-2 hover:text-teal w-full text-left flex items-center justify-between"
-              >
+              <div className="text-lg font-medium py-2 text-teal w-full text-left flex items-center justify-between">
                 <span>{translations.services}</span>
-                <ChevronDown className={`h-5 w-5 transform transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
-              </button>
+              </div>
               
-              {isServicesOpen && (
-                <div className="ml-4 mt-2 space-y-4 border-l-2 border-gray-800 pl-4">
-                  <div>
-                    <button
-                      onClick={() => navigateToPage('/growth')}
-                      className={`block text-lg font-medium py-2 w-full text-left ${
-                        activeSection === "growth" 
-                          ? "text-orange-400" 
-                          : "text-gray-300 hover:text-orange-400"
-                      }`}
-                    >
-                      L'eep Growth
-                    </button>
-                    <p className="text-sm text-gray-400 mt-1 mb-3">
-                      {language === "pt" ? "Consultoria de crescimento estratégico" : "Strategic growth consulting"}
-                    </p>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => navigateToPage('/brief')}
-                      className={`block text-lg font-medium py-2 w-full text-left ${
-                        activeSection === "brief" 
-                          ? "text-purple-400" 
-                          : "text-gray-300 hover:text-purple-400"
-                      }`}
-                    >
-                      L'eep Brief
-                    </button>
-                    <p className="text-sm text-gray-400 mt-1 mb-3">
-                      {language === "pt" ? "Planejamento criativo e estratégico" : "Creative and strategic planning"}
-                    </p>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => navigateToPage('/on')}
-                      className={`block text-lg font-medium py-2 w-full text-left ${
-                        activeSection === "on" 
-                          ? "text-red-400" 
-                          : "text-gray-300 hover:text-red-400"
-                      }`}
-                    >
-                      L'eep On
-                    </button>
-                    <p className="text-sm text-gray-400 mt-1 mb-3">
-                      {language === "pt" ? "Marketing e PR digital" : "Digital marketing and PR"}
-                    </p>
-                  </div>
+              <div className="ml-4 mt-2 space-y-4 border-l-2 border-gray-800 pl-4">
+                <div>
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      window.location.href = '/growth';
+                    }}
+                    className={`block text-lg font-medium py-2 w-full text-left ${
+                      activeSection === "growth" 
+                        ? "text-orange-400" 
+                        : "text-gray-300 hover:text-orange-400"
+                    }`}
+                  >
+                    L'eep Growth
+                  </button>
+                  <p className="text-sm text-gray-400 mt-1 mb-3">
+                    {language === "pt" ? "Consultoria de crescimento estratégico" : "Strategic growth consulting"}
+                  </p>
                 </div>
-              )}
+                <div>
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      window.location.href = '/brief';
+                    }}
+                    className={`block text-lg font-medium py-2 w-full text-left ${
+                      activeSection === "brief" 
+                        ? "text-purple-400" 
+                        : "text-gray-300 hover:text-purple-400"
+                    }`}
+                  >
+                    L'eep Brief
+                  </button>
+                  <p className="text-sm text-gray-400 mt-1 mb-3">
+                    {language === "pt" ? "Planejamento criativo e estratégico" : "Creative and strategic planning"}
+                  </p>
+                </div>
+                <div>
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      window.location.href = '/on';
+                    }}
+                    className={`block text-lg font-medium py-2 w-full text-left ${
+                      activeSection === "on" 
+                        ? "text-red-400" 
+                        : "text-gray-300 hover:text-red-400"
+                    }`}
+                  >
+                    L'eep On
+                  </button>
+                  <p className="text-sm text-gray-400 mt-1 mb-3">
+                    {language === "pt" ? "Marketing e PR digital" : "Digital marketing and PR"}
+                  </p>
+                </div>
+              </div>
             </div>
             
             <button
-              onClick={() => navigateToPage('/blog')}
+              onClick={() => {
+                setIsMenuOpen(false);
+                window.location.href = '/blog';
+              }}
               className="text-lg font-medium py-2 w-full text-left hover:text-teal"
             >
               Blog
