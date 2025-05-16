@@ -334,6 +334,7 @@
             width: 200px;
             height: 100%;
             object-fit: cover;
+            object-position: top;
         }
 
         .archetype-content {
@@ -379,6 +380,106 @@
             margin-bottom: 0.3rem;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+            .design-elements {
+                grid-template-columns: 1fr;
+            }
+            .mosaic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .categories {
+                grid-template-columns: 1fr;
+            }
+            .brand-info {
+                grid-template-columns: 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .archetypes {
+                grid-template-columns: 1fr;
+            }
+            .archetype-card {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+            }
+            .archetype-image {
+                width: 100%;
+                height: 220px;
+                max-width: 100vw;
+                border-radius: 8px 8px 0 0;
+                display: block;
+                object-position: top;
+            }
+            .archetype-content {
+                padding: 1rem;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0.5rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .section-title h2 {
+                font-size: 1.1rem;
+            }
+            .brand-intro h2 {
+                font-size: 1.1rem;
+            }
+            .brand-intro p {
+                font-size: 0.95rem;
+            }
+            .color-item {
+                align-items: stretch;
+            }
+            .color-card {
+                height: 100%;
+                min-height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .typography-section {
+                padding: 0.7rem;
+            }
+            .mosaic-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+            }
+            .category-card {
+                padding: 0.7rem;
+            }
+            .archetype-card {
+                flex-direction: row;
+                align-items: flex-start;
+                height: auto;
+            }
+            .archetype-image {
+                width: 140px;
+                height: auto;
+                max-width: 140px;
+                min-width: 100px;
+                object-fit: cover;
+                object-position: top;
+                border-radius: 8px 0 0 8px;
+                display: block;
+            }
+            .archetype-content {
+                padding: 0.7rem 0.7rem 0.7rem 1.2rem;
+            }
+            .archetype-content h3 {
+                font-size: 1rem;
+            }
+            .archetype-label {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
