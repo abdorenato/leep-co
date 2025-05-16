@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Board: Ficabem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-petroleo: #2C3E50;
+            --verde-oliva: #556B2F;
+            --terracota: #A0522D;
+            --areia: #DEB887;
+            --off-white: #F5F5F5;
+            --cinza-suave: #E0E0E0;
+            --azul-claro: #3498DB;
+            --verde-suave: #7DCEA0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--off-white);
+            color: var(--azul-petroleo);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-petroleo);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--verde-oliva);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--azul-petroleo);
+            font-size: 0.9rem;
+        }
+
+        .design-elements {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .color-palette {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .color-card {
+            width: 210px;
+            height: 70px;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 0.7rem;
+        }
+
+        .color-info {
+            flex: 1;
+        }
+
+        .color-info h3 {
+            color: var(--azul-petroleo);
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .color-info p {
+            margin-bottom: 0.25rem;
+            font-size: 0.8rem;
+        }
+
+        .color-info .justification {
+            font-size: 0.75rem;
+            color: var(--azul-petroleo);
+            line-height: 1.3;
+        }
+
+        .typography-section {
+            background-color: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .typography-example {
+            margin-bottom: 1.25rem;
+        }
+
+        .typography-example h1 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .typography-example p {
+            font-size: 0.85rem;
+        }
+
+        .typography-justification {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--cinza-suave);
+        }
+
+        .typography-justification h3 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .typography-justification p {
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .mosaic-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .mosaic-item:hover {
+            transform: scale(1.02);
+        }
+
+        .mosaic-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mosaic-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mosaic-item:hover::after {
+            opacity: 1;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .category-card h3 {
+            margin-bottom: 1rem;
+            color: var(--verde-oliva);
+        }
+
+        .category-card ul {
+            list-style-position: inside;
+        }
+
+        .category-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .placeholder-image {
+            background-color: var(--cinza-suave);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--azul-petroleo);
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .brand-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .brand-intro {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .brand-intro h2 {
+            color: var(--verde-oliva);
+            font-size: 2.2rem;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-intro p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--azul-petroleo);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            height: 100%;
+        }
+
+        .info-card {
+            background-color: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-card h3 {
+            color: var(--verde-oliva);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--azul-petroleo);
+        }
+
+        .info-card.tagline {
+            text-align: center;
+            background-color: var(--verde-oliva);
+            color: white;
+        }
+
+        .info-card.tagline h2 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .archetypes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .archetype-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            height: 340px;
+        }
+
+        .archetype-image {
+            width: 200px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .archetype-content {
+            padding: 1.2rem;
+            position: relative;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .archetype-content h3 {
+            color: var(--verde-oliva);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .archetype-content p {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: var(--azul-petroleo);
+            margin-bottom: 0.7rem;
+        }
+
+        .archetype-content .summary,
+        .archetype-content .full-text {
+            display: block;
+            position: static;
+            background: none;
+            padding: 0;
+            font-size: inherit;
+            color: inherit;
+            overflow: visible;
+        }
+
+        .archetype-card:hover .full-text,
+        .archetype-card:hover .summary {
+            display: block;
+        }
+
+        .archetype-label {
+            font-size: 0.95rem;
+            color: rgba(44, 62, 80, 0.6); /* var(--azul-petroleo) with 60% opacity */
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mood Board: Ficabem</h1>
+            <p>Integrando tecnologia de ponta com cultura contemporânea nordestina</p>
+        </header>
+
+        <section class="brand-info">
+            <div class="brand-intro">
+                <h2>🌱 Design que nasce do território e aponta para o futuro</h2>
+                <p>O sistema visual da Ficabem foi concebido para refletir um novo tempo na saúde corporativa: mais humano, mais conectado e mais inteligente. Partimos da convicção de que tecnologia de verdade é aquela que se adapta às pessoas — e não o contrário.</p>
+                <p>Inspirado pelo calor simbólico do sertão nordestino e pelas possibilidades da saúde digital, o mood board da Ficabem traduz um encontro entre tradição e inovação. É o futuro com sotaque. O cuidado com conexão. A gestão com alma.</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Posicionamento</h3>
+                    <p>A primeira plataforma regional de gestão integrada de saúde corporativa, com foco em prevenção, performance e proximidade.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Propósito</h3>
+                    <p>Transformar saúde em algo mais acessível, eficiente e humano — com inteligência de dados e calor humano.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Tom de voz</h3>
+                    <p>Profissional e confiável (Governante) + empático e próximo (Cuidador).</p>
+                </div>
+                <div class="info-card tagline">
+                    <h2>"Ficabem com a gente."</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="archetypes">
+            <div class="archetype-card">
+                <img src="assets/images/governante.jpg" alt="O Governante" class="archetype-image">
+                <div class="archetype-content">
+                    <div class="archetype-label">Arquétipo Principal</div>
+                    <h3>O Governante</h3>
+                    <p>O Governante ressoa com decisores que valorizam previsibilidade, eficiência e resultados mensuráveis, essenciais para o público B2B. Busca controle, ordem e estabilidade, assumindo responsabilidade em sistemas complexos.</p>
+                    <p>O Ficabem traz ordem e controle à saúde corporativa, prometendo gestão eficiente de custos, conformidade regulatória e produtividade, com inteligência baseada em dados para maior visibilidade e controle estratégico.</p>
+                </div>
+            </div>
+
+            <div class="archetype-card">
+                <img src="assets/images/cuidador.jpg" alt="O Cuidador" class="archetype-image">
+                <div class="archetype-content">
+                    <div class="archetype-label">Arquétipo Secundário</div>
+                    <h3>O Cuidador</h3>
+                    <p>O Cuidador representa a missão de melhorar a saúde e o bem-estar das pessoas, com foco em cuidado humanizado e personalizado. O Ficabem reforça a centralidade do cuidado, oferecendo navegação de cuidados guiada por humanos e alinhando-se às tendências de saúde mental, prevenção e bem-estar.</p>
+                    <p>Demonstra empatia e constrói confiança e lealdade entre colaboradores e empregadores preocupados com sua força de trabalho.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <h2>Design System</h2>
+                <p>Elementos fundamentais que definem a identidade visual do projeto</p>
+            </div>
+            <div class="design-elements">
+                <div class="color-palette">
+                    <div class="color-item">
+                        <div class="color-card" style="background-color: var(--azul-petroleo)">
+                            <p>#2C3E50</p>
+                        </div>
+                        <div class="color-info">
+                            <h3>Azul Petróleo</h3>
+                            <p>#2C3E50</p>
+                            <p class="justification">Representa tecnologia e confiabilidade, trazendo sofisticação e profissionalismo ao design.</p>
+                        </div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-card" style="background-color: var(--verde-oliva)">
+                            <p>#556B2F</p>
+                        </div>
+                        <div class="color-info">
+                            <h3>Verde Oliva</h3>
+                            <p>#556B2F</p>
+                            <p class="justification">Conecta com a natureza e sustentabilidade, trazendo equilíbrio e crescimento.</p>
+                        </div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-card" style="background-color: var(--terracota)">
+                            <p>#A0522D</p>
+                        </div>
+                        <div class="color-info">
+                            <h3>Terracota</h3>
+                            <p>#A0522D</p>
+                            <p class="justification">Representa as raízes culturais e o acolhimento, trazendo calor e tradição.</p>
+                        </div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-card" style="background-color: var(--areia)">
+                            <p>#DEB887</p>
+                        </div>
+                        <div class="color-info">
+                            <h3>Areia</h3>
+                            <p>#DEB887</p>
+                            <p class="justification">Elemento de transição suave, trazendo simplicidade e naturalidade ao design.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="typography-section">
+                    <div class="typography-example">
+                        <h1>Montserrat Bold</h1>
+                        <p>Open Sans Regular - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="typography-example">
+                        <h3>Montserrat Semi-Bold</h3>
+                        <p>Open Sans Medium - Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                    </div>
+                    <div class="typography-justification">
+                        <h3>Justificativa da Escolha</h3>
+                        <p><strong>Montserrat:</strong> Fonte moderna e versátil para títulos, trazendo sofisticação e clareza. Sua geometria limpa complementa a natureza tecnológica do projeto.</p>
+                        <p><strong>Open Sans:</strong> Fonte altamente legível para textos, com excelente performance em diferentes tamanhos e dispositivos. Sua neutralidade permite que o conteúdo seja o foco.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <h2>Elementos Visuais</h2>
+                <p>Um mosaico que integra tecnologia, cultura e humanização, criando uma narrativa visual coesa e impactante.</p>
+            </div>
+            <div class="mosaic-grid">
+                <!-- Tecnologia -->
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-1.jpg" alt="Dashboard Moderno">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-2.jpg" alt="App Mobile">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-3.jpg" alt="Telemedicina">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-4.jpg" alt="Dispositivo IoT">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-5.jpg" alt="Visualização de Dados">
+                </div>
+
+                <!-- Cultura Nordestina -->
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-6.jpg" alt="Sertão Panorâmico">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-7.jpg" alt="Rio São Francisco">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-8.jpg" alt="Caatinga">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-9.jpg" alt="Arquitetura Moderna">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-10.jpg" alt="Textura Barro">
+                </div>
+
+                <!-- Humanização -->
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-11.jpg" alt="Profissional de Saúde">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-12.jpg" alt="Atendimento">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-13.jpg" alt="Comunidade">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-14.jpg" alt="Diversidade">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-15.jpg" alt="Cuidado">
+                </div>
+
+                <!-- Integração -->
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-16.jpg" alt="Tecnologia + Natureza">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-17.jpg" alt="Digital + Tradição">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-18.jpg" alt="Inovação Local">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-19.jpg" alt="Soluções Regionais">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-20.jpg" alt="Futuro Presente">
+                </div>
+
+                <!-- Elementos Visuais -->
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-21.jpg" alt="Padrões Naturais">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-22.jpg" alt="Texturas">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-23.jpg" alt="Cores Locais">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-24.jpg" alt="Formas Orgânicas">
+                </div>
+                <div class="mosaic-item">
+                    <img src="assets/images/mosaic/mosaico-25.jpg" alt="Elementos UI">
+                </div>
+            </div>
+
+            <div class="categories">
+                <div class="category-card">
+                    <h3>Tecnologia</h3>
+                    <ul>
+                        <li>Dashboards intuitivos</li>
+                        <li>Visualizações de dados</li>
+                        <li>Elementos UI/UX modernos</li>
+                        <li>Telemedicina</li>
+                        <li>Dispositivos IoT</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h3>Cultura Nordestina</h3>
+                    <ul>
+                        <li>Paisagens do sertão</li>
+                        <li>Rio São Francisco</li>
+                        <li>Texturas naturais</li>
+                        <li>Arquitetura contemporânea</li>
+                        <li>Elementos regionais</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h3>Humanização</h3>
+                    <ul>
+                        <li>Diversidade de pessoas</li>
+                        <li>Momentos de cuidado</li>
+                        <li>Comunidade e conexão</li>
+                        <li>Profissionais em ação</li>
+                        <li>Atendimento humanizado</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html> 
